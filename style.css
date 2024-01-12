@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Salsa&display=swap");
+
+body {
+	margin: 0;
+	padding: 0;
+    background-color: rgb(61, 101, 2);
+}
+
+@keyframes pulse {
+	from {
+		background-image: -webkit-linear-gradient(
+			right,
+			rgb(249, 133, 152),
+			rgb(104, 156, 104),
+			rgb(184, 53, 184)
+		);
+	}
+
+	to {
+		background-image: -webkit-linear-gradient(
+			right,
+			rgb(135, 12, 33),
+			rgb(1, 106, 1),
+			rgb(105, 7, 105)
+		);
+	}
+}
+
+.head {
+    padding-left: 50px;
+    margin-left: 125px;
+	width: fit-content;
+	font-family: "Salsa", Arial, Helvetica;
+
+	background-image: -webkit-linear-gradient(
+		right,
+		rgb(249, 133, 152),
+		rgb(104, 156, 104),
+		rgb(184, 53, 184),
+		rgb(249, 133, 152),
+		rgb(104, 156, 104),
+		rgb(184, 53, 184)
+	);
+	font-weight: bolder;
+	font-size: 4vw;
+
+	background-clip: text;
+	color: transparent;
+
+	text-align: center;
+}
+/* .main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid red;
+} */
+
+.task {
+	list-style-type: none;
+}
+
+.task li {
+	border: 2px solid salmon;
+	border-radius: 28px;
+	text-align: center;
+
+	padding: 18px;
+	transition: all 0.3s ease-in-out;
+    margin: 50px 22px 20px 12px;
+}
+
+.task li:hover {
+	cursor: pointer;
+
+	color: green;
+	background-color: rgb(110, 23, 38);
+}
+
+.task li:not(:hover) {
+	background-color: pink;
+}
+
+.task li > input {
+	cursor: pointer;
+}
+
+button {
+	border: none;
+	background-color: rgb(20, 159, 20);
+	margin-left: 18px;
+    
+    font-weight: bolder;
+    color:rgb(243, 236, 223);
+    font-family: 'Tahoma';
+    border-radius: 25px;
+    padding: 5px;
+    transition: all 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+}
+
+
+button:hover{
+    box-shadow: 5px 5px 12px greenyellow;
+}
+
+input {
+    border:none;
+    background-color: pink;
+    border-radius: 72px;
+    box-shadow: 2px 3px 4px rgb(126, 2, 23);
+    width :225px;
+    min-height: 30px;
+    max-height: 55px;
+    border-top-left-radius: 1px;
+
+    border-top-right-radius: 1px;
+    text-align: center;
+}
