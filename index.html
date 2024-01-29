@@ -9,21 +9,22 @@
 		<title>To Do list</title>
 	</head>
 	<body>
-		<div class="main">
-			<div class="head">
-				<h1><strong>To Do List</strong></h1>
-			</div>
-
-			<ul class="task">
-				
-			</ul>
+		<div class="head">
+			<h1 id="name">To Do List</h1>
 		</div>
-        <button onclick='createTask()'>click me to add task</button>
-		<aside>
-			<label>Notes</label>
-			<p>Hi this is paragraph text</p>
-		</aside>
 
-       
+		<br />
+
+		<ul class="task"></ul>
+
+		<div class="tasks">
+			<button class="add-task" onclick="createTask()">
+				click me to add task
+			</button>
+		</div>
+
+		<!-- <div class="notes">
+			<label for="notes">notes</label><input type="text" />
+		</div> -->
 	</body>
 </html>

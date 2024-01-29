@@ -1,40 +1,76 @@
-const body = document.body;
-let items = document.querySelector(".task");
+//implement use of local storage
 
-//console.log(items.firstElementChild);
-//const createTask = document.createElement("button");
-//createTask.innerText = "click me to add task";
-//body.appendChild(createTask);
+const body = document.body;
+
+let tasks = document.querySelector(".task");
 
 function createTask() {
-	//create a list element
 	let e = document.createElement("li");
-	//add a input field in it
-	e.appendChild(document.createElement("input"));
-	//create and append two buttons
+
+	let inpField = document.createElement("input");
+
+	inpField.classList.add("taskName");
+
+	e.append(inpField);
+
 	let del = document.createElement("button"),
 		edit = document.createElement("button"),
-		ok = document.createElement("button");
+		ok = document.createElement("button"),
+		removeTask = document.createElement("button");
 
-	e.append(del, edit, ok);
+	e.append(del, edit, ok, removeTask);
+	var buttons = [del, edit, ok, removeTask];
+	buttons.forEach((e) => {
+		e.classList.add("action");
+	});
+
+	// del.classList.add("action");
+
+	// edit.classList.add("action");
+
+	// ok.classList.add("action");
+
+	// removeTask.classList.add("action");
 
 	del.innerText = "Remove";
+
 	edit.innerText = "Edit";
-	ok.innerHTML = "&#x2713;";
+
+	ok.innerText = "save";
+
+	removeTask.innerText = "Delete Task Field";
 
 	ok.addEventListener("click", () => {
-		e.querySelector("input").readOnly = true;
+		if (inpField.value == "") {
+			console.log("empty");
+			inpField.placeholder = "enter something";
+
+			setTimeout(() => {
+				inpField.placeholder = "";
+			}, 1000);
+			return;
+		}
+
+		inpField.readOnly = true;
 	});
 
 	del.addEventListener("click", () => {
-		e.querySelector("input").placeholder = "enter something";
-		e.querySelector("input").value = "";
-		e.querySelector("input").readOnly = false;
+		inpField.placeholder = "enter something";
+
+		setTimeout(() => {
+			inpField.placeholder = "";
+		}, 2000);
+		inpField.value = "";
+		inpField.readOnly = false;
 	});
 
 	edit.addEventListener("click", () => {
-		e.querySelector("input").readOnly = false;
+		inpField.readOnly = false;
 	});
 
-	items.appendChild(e);
+	removeTask.addEventListener("click", () => {
+		e.remove();
+	});
+
+	tasks.appendChild(e);
 }
