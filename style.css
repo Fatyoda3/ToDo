@@ -1,118 +1,117 @@
-@import url("https://fonts.googleapis.com/css2?family=Salsa&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap");
 
 body {
-	margin: 0;
-	padding: 0;
-    background-color: rgb(61, 101, 2);
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle, #0f0f0f, #050505);
+  font-family: 'Orbitron', sans-serif;
+  color: #00ffe5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-@keyframes pulse {
-	from {
-		background-image: -webkit-linear-gradient(
-			right,
-			rgb(249, 133, 152),
-			rgb(104, 156, 104),
-			rgb(184, 53, 184)
-		);
-	}
-
-	to {
-		background-image: -webkit-linear-gradient(
-			right,
-			rgb(135, 12, 33),
-			rgb(1, 106, 1),
-			rgb(105, 7, 105)
-		);
-	}
+.container {
+  width: 90%;
+  max-width: 500px;
+  background: rgba(25, 25, 25, 0.9);
+  padding: 20px;
+  border: 2px solid #ff00ff;
+  box-shadow: 0 0 20px #00ffe5;
+  border-radius: 16px;
 }
 
-.head {
-    padding-left: 50px;
-    margin-left: 125px;
-	width: fit-content;
-	font-family: "Salsa", Arial, Helvetica;
-
-	background-image: -webkit-linear-gradient(
-		right,
-		rgb(249, 133, 152),
-		rgb(104, 156, 104),
-		rgb(184, 53, 184),
-		rgb(249, 133, 152),
-		rgb(104, 156, 104),
-		rgb(184, 53, 184)
-	);
-	font-weight: bolder;
-	font-size: 4vw;
-
-	background-clip: text;
-	color: transparent;
-
-	text-align: center;
+h1 {
+  text-align: center;
+  color: #ff00ff;
 }
-/* .main {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border: 1px solid red;
-} */
+
+.new-task {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.new-task input[type="text"], .new-task input[type="time"] {
+  flex: 1;
+  padding: 8px;
+  background: #111;
+  border: 1px solid #00ffe5;
+  color: #00ffe5;
+  border-radius: 8px;
+}
+
+.new-task button {
+  background: #ff00ff;
+  color: black;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.new-task button:hover {
+  box-shadow: 0 0 10px #00ffe5;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
 
 .task {
-	list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1a1a1a;
+  padding: 10px;
+  border: 1px solid #00ffe5;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
-.task li {
-	border: 2px solid salmon;
-	border-radius: 28px;
-	text-align: center;
-
-	padding: 18px;
-	transition: all 0.3s ease-in-out;
-    margin: 50px 22px 20px 12px;
+.task.done {
+  text-decoration: line-through;
+  opacity: 0.5;
 }
 
-.task li:hover {
-	cursor: pointer;
-
-	color: green;
-	background-color: rgb(110, 23, 38);
+.task input[type="checkbox"] {
+  transform: scale(1.5);
 }
 
-.task li:not(:hover) {
-	background-color: pink;
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.filters button {
+  flex: 1;
+  margin: 0 5px;
+  background-color: #222;
+  color: #00ffe5;
+  border: 1px solid #ff00ff;
+  padding: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.filters button:hover {
+  background-color: #ff00ff;
+  color: black;
 }
 
-.task li > input {
-	cursor: pointer;
+.clear-btn {
+  width: 100%;
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-button {
-	border: none;
-	background-color: rgb(20, 159, 20);
-	margin-left: 18px;
-    
-    font-weight: bolder;
-    color:rgb(243, 236, 223);
-    font-family: 'Tahoma';
-    border-radius: 25px;
-    padding: 5px;
-    transition: all 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
-}
-
-
-button:hover{
-    box-shadow: 5px 5px 12px greenyellow;
-}
-
-input {
-    border:none;
-    background-color: pink;
-    border-radius: 72px;
-    box-shadow: 2px 3px 4px rgb(126, 2, 23);
-    width :225px;
-    min-height: 30px;
-    max-height: 55px;
-    border-top-left-radius: 1px;
-
-    border-top-right-radius: 1px;
-    text-align: center;
+@media screen and (max-width: 500px) {
+  .new-task {
+    flex-direction: column;
+  }
 }

@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="style.css" />
-		<link rel="shortcut icon" href="#" type="image/x-icon" />
-		<script src="script.js" defer></script>
-		<title>To Do list</title>
-	</head>
-	<body>
-		<div class="main">
-			<div class="head">
-				<h1><strong>To Do List</strong></h1>
-			</div>
-
-			<ul class="task">
-				
-			</ul>
-		</div>
-        <button onclick='createTask()'>click me to add task</button>
-		<aside>
-			<label>Notes</label>
-			<p>Hi this is paragraph text</p>
-		</aside>
-
-       
-	</body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cyberpunk To-Do</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1>💀 CYBER TODO</h1>
+    <div class="new-task">
+      <input type="text" id="taskInput" placeholder="Enter new task..." />
+      <input type="time" id="taskTime" />
+      <button onclick="addTask()">+</button>
+    </div>
+    <div class="filters">
+      <button onclick="filterTasks('all')">All</button>
+      <button onclick="filterTasks('pending')">Pending</button>
+      <button onclick="filterTasks('completed')">Completed</button>
+    </div>
+    <ul id="taskList"></ul>
+    <button class="clear-btn" onclick="clearAll()">Clear All</button>
+  </div>
+</body>
 </html>

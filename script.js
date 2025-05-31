@@ -1,40 +1,71 @@
-const body = document.body;
-let items = document.querySelector(".task");
+const taskList = document.getElementById("taskList");
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-//console.log(items.firstElementChild);
-//const createTask = document.createElement("button");
-//createTask.innerText = "click me to add task";
-//body.appendChild(createTask);
-
-function createTask() {
-	//create a list element
-	let e = document.createElement("li");
-	//add a input field in it
-	e.appendChild(document.createElement("input"));
-	//create and append two buttons
-	let del = document.createElement("button"),
-		edit = document.createElement("button"),
-		ok = document.createElement("button");
-
-	e.append(del, edit, ok);
-
-	del.innerText = "Remove";
-	edit.innerText = "Edit";
-	ok.innerHTML = "&#x2713;";
-
-	ok.addEventListener("click", () => {
-		e.querySelector("input").readOnly = true;
-	});
-
-	del.addEventListener("click", () => {
-		e.querySelector("input").placeholder = "enter something";
-		e.querySelector("input").value = "";
-		e.querySelector("input").readOnly = false;
-	});
-
-	edit.addEventListener("click", () => {
-		e.querySelector("input").readOnly = false;
-	});
-
-	items.appendChild(e);
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+
+function addTask() {
+  const text = document.getElementById("taskInput").value.trim();
+  const time = document.getElementById("taskTime").value;
+  if (!text) return;
+
+  tasks.push({ text, time, completed: false });
+  saveTasks();
+  renderTasks();
+  document.getElementById("taskInput").value = "";
+  document.getElementById("taskTime").value = "";
+}
+
+function toggleComplete(index) {
+  tasks[index].completed = !tasks[index].completed;
+  saveTasks();
+  renderTasks();
+}
+
+function deleteTask(index) {
+  tasks.splice(index, 1);
+  saveTasks();
+  renderTasks();
+}
+
+function clearAll() {
+  tasks = [];
+  saveTasks();
+  renderTasks();
+}
+
+function filterTasks(type) {
+  renderTasks(type);
+}
+
+function renderTasks(filter = "all") {
+  taskList.innerHTML = "";
+
+  tasks.forEach((task, i) => {
+    if (filter === "completed" && !task.completed) return;
+    if (filter === "pending" && task.completed) return;
+
+    const li = document.createElement("li");
+    li.className = "task" + (task.completed ? " done" : "");
+
+    const label = document.createElement("label");
+    label.innerText = `${task.text} ${task.time ? `⏰ ${task.time}` : ""}`;
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = task.completed;
+    checkbox.onchange = () => toggleComplete(i);
+
+    const del = document.createElement("button");
+    del.innerText = "✖";
+    del.onclick = () => deleteTask(i);
+
+    li.appendChild(checkbox);
+    li.appendChild(label);
+    li.appendChild(del);
+    taskList.appendChild(li);
+  });
+}
+
+renderTasks();
